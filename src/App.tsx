@@ -12,23 +12,9 @@ import './styles/global.scss';
 
 import './styles/sidebar.scss';
 import './styles/content.scss';
-
-interface GenreResponseProps {
-  id: number;
-  name: 'action' | 'comedy' | 'documentary' | 'drama' | 'horror' | 'family';
-  title: string;
-}
-
-interface MovieProps {
-  imdbID: string;
-  Title: string;
-  Poster: string;
-  Ratings: Array<{
-    Source: string;
-    Value: string;
-  }>;
-  Runtime: string;
-}
+import { GenreResponseProps } from './models/genre-response-props';
+import { MovieProps } from './models/movie-props';
+import { Content } from './components/Content';
 
 export function App() {
   const [selectedGenreId, setSelectedGenreId] = useState(1);
@@ -78,17 +64,7 @@ export function App() {
       </nav>
 
       <div className="container">
-        <header>
-          <span className="category">Categoria:<span> {selectedGenre.title}</span></span>
-        </header>
-
-        <main>
-          <div className="movies-list">
-            {movies.map(movie => (
-              <MovieCard key ={movie.imdbID} title={movie.Title} poster={movie.Poster} runtime={movie.Runtime} rating={movie.Ratings[0].Value} />
-            ))}
-          </div>
-        </main>
+       <Content movies={movies} selectedGenre={selectedGenre} />
       </div>
     </div>
   )
