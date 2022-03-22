@@ -1,7 +1,6 @@
 import {GenreResponseProps} from "../models/genre-response-props";
 import {MovieProps} from "../models/movie-props";
 import {Header} from "./Header";
-import {MovieCard} from "./MovieCard";
 import { MoviesList } from "./MoviesList";
 
 interface Props {
